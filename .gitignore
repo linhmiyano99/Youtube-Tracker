@@ -1,2 +1,2 @@
-src/main/.env
+./src/main/.env
 secret.py
