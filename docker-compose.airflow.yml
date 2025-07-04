@@ -12,7 +12,7 @@ services:
       - postgres_data:/var/lib/postgresql/data
 
   airflow-webserver:
-    image: apache/airflow:2.8.3
+    image: airflow-extending:latest
     restart: always
     depends_on:
       - postgres
@@ -28,7 +28,7 @@ services:
       - ./airflow/logs:/opt/airflow/logs
 
   airflow-scheduler:
-    image: apache/airflow:2.8.3
+    image: airflow-extending:latest
     restart: always
     depends_on:
       - postgres
@@ -41,7 +41,7 @@ services:
       - ./airflow/logs:/opt/airflow/logs
 
   airflow-init:
-    image: apache/airflow:2.8.3
+    image: airflow-extending:latest
     depends_on:
       - postgres
     environment:

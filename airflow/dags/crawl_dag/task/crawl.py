@@ -2,8 +2,7 @@ import os
 import time
 from datetime import datetime
 import requests
-from pymongo import MongoClient
-from crawl_dag.load_config import api_key, mongo_uri, VIDEO_ID
+from crawl_dag.load_config import api_key, VIDEO_ID
 
 
 # connect to MongoDB
@@ -28,25 +27,3 @@ def get_video_stats(video_id):
         "likeCount": int(stats.get("likeCount", 0)),
         "commentCount": int(stats.get("commentCount", 0))
     }
-#
-# while True:
-#     try:
-#         stats = get_video_stats(VIDEO_ID)
-#         timestamp = datetime.now().isoformat()
-#
-#         # save to MongoDB
-#         document = {
-#             "timestamp": timestamp,
-#             "video_id": VIDEO_ID,
-#             "viewCount": stats['viewCount'],
-#             "likeCount": stats['likeCount'],
-#             "commentCount": stats['commentCount']
-#         }
-#         collection.insert_one(document)
-#
-#         print(
-#             f"[{timestamp}] Saved to MongoDB: view={stats['viewCount']}, like={stats['likeCount']}, comment={stats['commentCount']}"
-#         )
-#     except Exception as e:
-#         print("Error:", e)
-#     time.sleep(60)
